@@ -32,4 +32,4 @@ My own vimrc
  * https://github.com/yegappan/mru
 
 ## Screens
-![Screen shoots](/doc/screen.png)
+![Screen shoots](https://raw.github.com/Sharpek/vimrc/master/docs/screen.png)
