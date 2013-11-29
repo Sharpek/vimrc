@@ -153,3 +153,26 @@ autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
 nnoremap <F5> :GundoToggle<CR>
+
+" Jeżeli wyszukałeś jakąś frazę, to vim ją podkreślił, jeśli chcesz pozbyć się podświetlenia wciśnij CTRL+n.
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
+" Szybki zapis pliku, CTRL+z. "
+noremap <C-Z> :update<CR>
+vnoremap <C-Z> <C-C>:update<CR>
+inoremap <C-Z> <C-O>:update<CR>
+set noswapfile
+
+" Pierwsza linijka ustawia pod skrótem ",g" wywołanie RopeGotoDefinition... Jeżeli zapomniałeś czegoś na temat danego obiektu albo chcesz się dowiedzieć czegoś nowego na jego temat to wskazujesz na niego, wciskasz ",g" i przenosi cię do pliku w którym jest zaimplementowany.
+" Druga włącza obsługę skrótów.
+" W trzeciej przekazujesz w jaki sposób ma się wyświetlać okno, po znalezieniu pliku w którym obiekt jest zaimplementowany. W tym przypadku dzieli ekran pionową kreską, przykład:
+map <Leader>g :call RopeGotoDefinition()<CR>
+let ropevim_enable_shortcuts = 1
+let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_rope_extended_complete = 1
+let g:pymode_breakpoint = 0
+let g:pymode_syntax = 1
+let g:pymode_virtualenv = 1
+
+nmap <leader>a <Esc>:Ack!

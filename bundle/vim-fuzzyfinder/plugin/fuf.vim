@@ -56,7 +56,7 @@ function s:initialize()
   "---------------------------------------------------------------------------
   call l9#defineVariableDefault('g:fuf_file_prompt'     , '>File[]>')
   call l9#defineVariableDefault('g:fuf_file_switchOrder', 20)
-  call l9#defineVariableDefault('g:fuf_file_exclude'    , '\v\~$|\.(o|exe|dll|bak|orig|sw[po])$|(^|[/\\])\.(hg|git|bzr)($|[/\\])')
+  call l9#defineVariableDefault('g:fuf_file_exclude'    , '\v\~$|\.(o|exe|dll|bak|pyc|orig|sw[po])$|(^|[/\\])\.(hg|git|bzr)($|[/\\])')
   "---------------------------------------------------------------------------
   call l9#defineVariableDefault('g:fuf_coveragefile_prompt'     , '>CoverageFile[]>')
   call l9#defineVariableDefault('g:fuf_coveragefile_switchOrder', 30)
