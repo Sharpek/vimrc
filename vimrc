@@ -176,3 +176,5 @@ let g:pymode_syntax = 1
 let g:pymode_virtualenv = 1
 
 nmap <leader>a <Esc>:Ack!
+" Remove Trailing Whitespace
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
