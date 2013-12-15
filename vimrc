@@ -178,3 +178,5 @@ let g:pymode_virtualenv = 1
 nmap <leader>a <Esc>:Ack!
 " Remove Trailing Whitespace
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+
+let g:user_emmet_leader_key='<C-y>'
