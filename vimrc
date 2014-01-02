@@ -48,7 +48,7 @@ nnoremap <F1> :w<CR>
 vmap r "_dP 
 
 autocmd BufRead,BufNewFile *.py     setfiletype python
-au BufEnter *.py set textwidth=79
+au BufEnter *.py set textwidth=100
 
 " More syntax highlighting.
 let python_highlight_all = 1
@@ -113,7 +113,7 @@ map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.orig']
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\', '\.hg', '\.svn', '\.bzr', '\.orig']
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
@@ -130,13 +130,7 @@ noremap <Left> <nop>
 set backup        " keep a backup file
 set backupdir=~/.vimbackup,/tmp
 set directory=~/.vimbackup//,/tmp//
-" Ropevim
-" Pathogen load
 filetype off
-
-call pathogen#infect()
-" call pathogen#helptags()
-
 filetype plugin indent on
 syntax on
 " pymode - wylacza pylint przy zapisie
@@ -169,14 +163,80 @@ set noswapfile
 " W trzeciej przekazujesz w jaki sposób ma się wyświetlać okno, po znalezieniu pliku w którym obiekt jest zaimplementowany. W tym przypadku dzieli ekran pionową kreską, przykład:
 map <Leader>g :call RopeGotoDefinition()<CR>
 let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
-let g:pymode_rope_extended_complete = 1
+" let g:pymode_rope_goto_def_newwin = "vnew"
+" let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
+let g:pymode_syntax = 0
 let g:pymode_virtualenv = 1
+let g:pymode_lint = 0
+let g:pymode_lint_cwindow = 0
 
 nmap <leader>a <Esc>:Ack!
 " Remove Trailing Whitespace
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 let g:user_emmet_leader_key='<C-y>'
+let g:syntastic_python_flake8_post_args='--max-line-length=100'
+
+" Rope tips
+" M-/	RopeCodeAssist
+" M-?	RopeLuckyAssist
+" C-c g	RopeGotoDefinition
+" C-c d	RopeShowDoc
+" C-c f	RopeFindOccurrences
+
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" autopep8
+autocmd FileType python map <buffer> <F3> :call Autopep8()<CR>
+let g:autopep8_max_line_length=100
+let g:autopep8_disable_show_diff=1
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'Raimondi/delimitMate'
+Bundle 'bitc/vim-bad-whitespace'
+Bundle 'bling/vim-airline'
+Bundle 'ciaranm/detectindent'
+Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'dockyard/vim-easydir'
+Bundle 'docunext/closetag.vim'
+Bundle 'ervandew/supertab'
+Bundle 'garbas/vim-snipmate'
+Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'klen/python-mode'
+Bundle 'kwaledesign/scss-snippets'
+Bundle 'majutsushi/tagbar'
+Bundle 'mattn/emmet-vim'
+Bundle 'mjbrownie/pythoncomplete.vim'
+Bundle 'rking/ag.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'sjl/gundo.vim'
+Bundle 'tell-k/vim-autopep8'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tomtom/tlib_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-surround'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/Efficient-python-folding'
+Bundle 'vim-scripts/py-coverage'
+Bundle 'vim-scripts/tComment'
+Bundle 'vim-scripts/typeredeemer'
+Bundle 'vim-scripts/upAndDown'
+Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
+Bundle 'yegappan/mru'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
