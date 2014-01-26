@@ -242,9 +242,15 @@ Bundle 'xolox/vim-misc'
 Bundle 'yegappan/mru'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sgur/ctrlp-extensions.vim'
+Bundle 'ivalkeen/vim-ctrlp-tjump'
+Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'jasoncodes/ctrlp-modified.vim'
 Bundle 'argtextobj.vim'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'fisadev/vim-ctrlp-cmdpalette'
 
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
@@ -276,3 +282,25 @@ nnoremap <leader>s :mksession<CR>
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" CtrlP modified
+map <Leader>m :CtrlPModified<CR>
+map <Leader>M :CtrlPBranch<CR>
+" Tags CtrlP
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
+let g:ctrlp_extensions = ['funky']
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
