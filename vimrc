@@ -45,7 +45,7 @@ nnoremap <F6> :!/opt/local/bin/ctags -R --python-kinds=-i *.py<CR>
 nnoremap <F4> :TagbarToggle<CR>
 nnoremap <F6> :SyntasticCheck<CR>
 nnoremap <F1> :w<CR>
-vmap r "_dP 
+vmap r "_dP
 
 autocmd BufRead,BufNewFile *.py     setfiletype python
 au BufEnter *.py set textwidth=100
@@ -178,6 +178,9 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 let g:user_emmet_leader_key='<C-y>'
 let g:syntastic_python_flake8_post_args='--max-line-length=100'
 
+" TIPS
+" Ctrl + o - back to previouse file
+
 " Rope tips
 " M-/	RopeCodeAssist
 " M-?	RopeLuckyAssist
@@ -198,7 +201,6 @@ let g:autopep8_disable_show_diff=1
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
 
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -228,7 +230,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-surround'
+Bundle "tpope/vim-surround"
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/Efficient-python-folding'
 Bundle 'vim-scripts/py-coverage'
@@ -238,5 +240,39 @@ Bundle 'vim-scripts/upAndDown'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
 Bundle 'yegappan/mru'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'argtextobj.vim'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+
+set lazyredraw          " redraw only when we need to.
+set showmatch           " highlight matching [{()}]
+set wildmenu            " visual autocomplete for command menu
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes folds
+nnoremap <space> za
+set foldmethod=indent   " fold based on indent level
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" jk is escape
+inoremap jk <esc>
+
+" save session
+nnoremap <leader>s :mksession<CR>
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
