@@ -202,55 +202,55 @@ let g:autopep8_disable_show_diff=1
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'Raimondi/delimitMate'
+Bundle "tpope/vim-surround"
+Bundle 'argtextobj.vim'
 Bundle 'bitc/vim-bad-whitespace'
+Bundle 'bkad/CamelCaseMotion'
 Bundle 'bling/vim-airline'
 Bundle 'ciaranm/detectindent'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'dockyard/vim-easydir'
 Bundle 'docunext/closetag.vim'
 Bundle 'ervandew/supertab'
+Bundle 'fisadev/vim-ctrlp-cmdpalette'
+Bundle 'FuzzyFinder'
 Bundle 'garbas/vim-snipmate'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'ivalkeen/vim-ctrlp-tjump'
+Bundle 'jasoncodes/ctrlp-modified.vim'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
 Bundle 'klen/python-mode'
 Bundle 'kwaledesign/scss-snippets'
+Bundle 'L9'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'majutsushi/tagbar'
+Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'mattn/emmet-vim'
+Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'mjbrownie/pythoncomplete.vim'
+Bundle 'paradigm/TextObjectify'
+Bundle 'Raimondi/delimitMate'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'sgur/ctrlp-extensions.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'tell-k/vim-autopep8'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-sensible'
-Bundle "tpope/vim-surround"
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/Efficient-python-folding'
 Bundle 'vim-scripts/py-coverage'
 Bundle 'vim-scripts/tComment'
-Bundle 'vim-scripts/typeredeemer'
 Bundle 'vim-scripts/upAndDown'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
 Bundle 'yegappan/mru'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'kien/ctrlp.vim'
-Bundle 'sgur/ctrlp-extensions.vim'
-Bundle 'ivalkeen/vim-ctrlp-tjump'
-Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'jasoncodes/ctrlp-modified.vim'
-Bundle 'argtextobj.vim'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
 
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
@@ -287,7 +287,7 @@ nnoremap k gk
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " CtrlP modified
 map <Leader>m :CtrlPModified<CR>
@@ -301,6 +301,22 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+"set wildmode=list:longest
+set wildmode=longest,list,full
+" set wildmenu                    " Enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.scssc                          " Sass cache files
+set wildignore+=*.sw?,*vim/backups*              " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=node_modules                     " Node Modules
+set wildignore+=migrations
+set wildignore+=*.luac                           " Lua byte code
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+
+set wildignore+=*.orig
